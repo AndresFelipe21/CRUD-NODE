@@ -16,9 +16,21 @@ router.get("/Crud-Completo-con-NodeJS-Express-y-MySQL", async (req, res) => {
   }
 });
 
-router.get("/acerca", (req, res) => {
-  res.render("pages/acerca"); 
+router.get("/rick-and-morty", (req, res) => {
+  res.render("pages/rick-and-morty"); 
 });
+
+router.get("/carros", async (req, res) => {
+  try {
+      const response = await fetch("https://car-models-api.herokuapp.com/cars"); // Cambia esta URL a la API real que estás utilizando
+      const cars = await response.json();
+      res.render("pages/carros", { cars }); // Pasa los datos de los carros a la vista
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Error al obtener los carros.");
+  }
+});
+
 
 
 export default router;
