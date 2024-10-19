@@ -22,12 +22,12 @@ router.get("/rick-and-morty", (req, res) => {
 
 router.get("/carros", async (req, res) => {
   try {
-      const response = await fetch("https://car-models-api.herokuapp.com/cars"); // Cambia esta URL a la API real que estás utilizando
-      const cars = await response.json();
-      res.render("pages/carros", { cars }); // Pasa los datos de los carros a la vista
+      const response = await fetch("https://api.unsplash.com/photos?client_id=q7CUYyOpBORXxFbreu90jJSLxOYrQqZPxjj8gvVOWAw"); // Reemplaza YOUR_ACCESS_KEY con tu clave de acceso de Unsplash
+      const images = await response.json();
+      res.render("pages/carros", { images }); // Pasa los datos de las imágenes a la vista
   } catch (error) {
       console.error(error);
-      res.status(500).send("Error al obtener los carros.");
+      res.status(500).send("Error al obtener las imágenes.");
   }
 });
 
